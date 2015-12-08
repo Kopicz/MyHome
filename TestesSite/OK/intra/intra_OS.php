@@ -40,12 +40,19 @@ header("Location: ../index1.php");
         }
         #divPrincipal{
           width: 50%;
-          float: right;
+          float: left;
         }
         .panelPrincipal{
           margin-left: 10%;
           width: 80%;
         }
+        #btnMenuIntra{
+          float: left;
+        }
+        .btn-info{
+          width: 200px;
+        }
+
         .endereco{
             float: right;
             text-align: right;
@@ -129,25 +136,26 @@ header("Location: ../index1.php");
   </div>
 </nav>
 <!--Fechamento navbar-->
-<div class="container" id="divBotoes">
-              <a href="consultaClient.php?page=1"> <button id="btnProdIntra"type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
-            <span class="glyphicon glyphicon-user" style="font-size:48px" text-align="center";></span><br>CONSULTA CLIENTES</button></a>
-            </div>
-              
-            <div>
-            <a href="consultaprod.php?page=1"> <button id="btnProdIntra"type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
-            <span class="glyphicon glyphicon-barcode" style="font-size:48px" text-align="center";></span><br>CONSULTA PRODUTOS</button></a>
-          </div>
 <!-- panel "novidades"-->
       <div class="panel panel-primary" id="divPrincipal">
         <div class="panel-heading">Teste Intranet</div>
         <div class="panel-body">
-                <div class="panelPrincipal">               
-                  <div>
-            
+                <div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span2">
+<div id="divBotoes">
+              <a href="consultaClient.php?page=1"> <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
+            <span class="glyphicon glyphicon-user" style="font-size:48px" text-align="center";></span><br>CONSULTA CLIENTES</button></a>
+            </div>
+              <br>
+            <div id="divBotoes">
+            <a href="consultaprod.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
+            <span class="glyphicon glyphicon-barcode" style="font-size:48px" text-align="center";></span><br>CONSULTA PRODUTOS</button></a>
+          </div>
+                            
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------->
-                    <div class="">
+                    <div>
                     <?php include 'conexao.php' ?>
 <?php
 $page = $_GET["page"];
