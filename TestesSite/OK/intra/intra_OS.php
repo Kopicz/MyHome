@@ -39,18 +39,19 @@ header("Location: ../index1.php");
           margin-left: 27%;
         }
         #divPrincipal{
-          width: 50%;
+          width: 80%;
           float: left;
         }
         .panelPrincipal{
           margin-left: 10%;
           width: 80%;
         }
-        #btnMenuIntra{
+        #divbotao{
           float: left;
         }
         .btn-info{
           width: 200px;
+
         }
 
         .endereco{
@@ -136,14 +137,16 @@ header("Location: ../index1.php");
   </div>
 </nav>
 <!--Fechamento navbar-->
-<!-- panel "novidades"-->
-      <div class="panel panel-primary" id="divPrincipal">
-        <div class="panel-heading">Teste Intranet</div>
-        <div class="panel-body">
-                <div class="container-fluid">
+
+
+
+
+
+<div class="container-fluid" id="divBotao">
   <div class="row-fluid">
     <div class="span2">
-<div id="divBotoes">
+      
+        <div id="divBotoes">
               <a href="consultaClient.php?page=1"> <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
             <span class="glyphicon glyphicon-user" style="font-size:48px" text-align="center";></span><br>CONSULTA CLIENTES</button></a>
             </div>
@@ -152,7 +155,23 @@ header("Location: ../index1.php");
             <a href="consultaprod.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
             <span class="glyphicon glyphicon-barcode" style="font-size:48px" text-align="center";></span><br>CONSULTA PRODUTOS</button></a>
           </div>
-                            
+
+    </div>    
+    </div>    
+    </div>    
+
+
+
+
+
+
+<!-- panel "novidades"-->
+      <div class="panel panel-primary span10" id="divPrincipal">
+        <div class="panel-heading">Teste Intranet</div>
+        <div class="panel-body">
+                <div class="panelPrincipal">               
+                  <div>
+            
 
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------->
                     <div>
