@@ -14,11 +14,11 @@ header("Location: ../index1.php");
 <body>
 <div class="container">
 <?php
-$p = $_GET["p"];
-if(isset($p)) {
-$p = $p;
+$page = $_GET["page"];
+if(isset($page)) {
+$page = $page;
 } else {
-$p = 1;
+$page = 1;
 }
     //verifica a página atual caso seja informada na URL, senão atribui como 1ª página
       //  $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
@@ -39,7 +39,7 @@ $p = 1;
         $numPaginas = ceil($total/$registros);
    
     //variavel para calcular o início da visualização com base na página atual
-        $inicio = ($registros*$p)-$registros;
+        $inicio = ($registros*$page)-$registros;
  
     //seleciona os itens por página
         
@@ -79,26 +79,26 @@ echo '
 <nav>
   <ul class="pagination">
     <li>';
-      echo "<a href='consultaprod.php?p=1'>primeira pagina</a> ";
+      echo "<a href='consultaprod.php?page=1'>primeira pagina</a> ";
       echo '</a>
     </li>';
 
 
 // Cria um for() para exibir os 3 links antes da página atual
-for($i = $p-$max_links; $i <= $p-1; $i++) {
+for($i = $page-$max_links; $i <= $page-1; $i++) {
 // Se o número da página for menor ou igual a zero, não faz nada
 // (afinal, não existe página 0, -1, -2..)
 if($i <=0) {
 //faz nada
 // Se estiver tudo OK, cria o link para outra página
 } else {
-echo "<li><a href='consultaprod.php?p=$i'>$i</a></li>";
+echo "<li><a href='consultaprod.php?page=$i'>$i</a></li>";
 }
 }
 // Exibe a página atual, sem link, apenas o número
-echo "<li class='disabled'><a href='consultaprod.php?p=$i'>$i</a></li>";
+echo "<li class='disabled'><a href='consultaprod.php?page=$i'>$i</a></li>";
 // Cria outro for(), desta vez para exibir 3 links após a página atual
-for($i = $p+1; $i <= $p+$max_links; $i++) {
+for($i = $page+1; $i <= $page+$max_links; $i++) {
 // Verifica se a página atual é maior do que a última página. Se for, não faz nada.
 if($i > $numPaginas)
 {
@@ -107,12 +107,12 @@ if($i > $numPaginas)
 // Se tiver tudo Ok gera os links.
 else
 {
-echo "<li><a href='consultaprod.php?p=$i'>$i</a></li>";
+echo "<li><a href='consultaprod.php?page=$i'>$i</a></li>";
 }
 }
 // Exibe o link "última página"
     echo '<li>';
-    echo "<a href='consultaprod.php?p=$numPaginas'>ultima pagina</a> ";
+    echo "<a href='consultaprod.php?page=$numPaginas'>ultima pagina</a> ";
     echo '</li>
   </ul>
 </nav>
