@@ -38,7 +38,7 @@ header("Location: ../index1.php");
         #logar{
           margin-left: 27%;
         }
-        #divPrincipal{
+        #divConteudoPrincipal{
           width: 80%;
           float: left;
         }
@@ -47,9 +47,10 @@ header("Location: ../index1.php");
           width: 80%;
         }
         #divbotao{
+          width: 20%;
           float: left;
         }
-        .btn-info{
+        .btn-primary{
           width: 200px;
 
         }
@@ -62,7 +63,9 @@ header("Location: ../index1.php");
           float: right;
         }
     </style>
- <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
 
   </head>
   <body>
@@ -128,6 +131,146 @@ header("Location: ../index1.php");
 <!--/5--> </div>
 <!--/4--> </nav>
 <!--Fechamento navbar-->
+<!--abertura divs dos conteudos-->
+<!--1--> <div class="panel panel-primary span10">
+<!--2--> <div class="panel-heading">Teste Intranet<!--/2--></div>
+<!--3-->    <div class="panel-body">
+<!--4 MAE DOS CONTEUDOS-->      <div>
+
+<!--1 BOTAO-->    <div class="container-fluid" id="divBotao">
+<!--2 BOTAO-->      <div class="row-fluid">
+<!--3 BOTAO-->        <div class="span2">
+<!--4 BOTAO-->          <div id="divBotoes">
+                            <a href="consultaClient.php?page=1"> <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
+                            <span class="glyphicon glyphicon-user" style="font-size:48px" text-align="center";></span><br>CONSULTA CLIENTES</button></a>
+<!--/4 BOTAO-->         </div>
+                            <br>
+<!--5 BOTAO-->          <div id="divBotoes">
+                          <a href="consultaprod.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
+                          <span class="glyphicon glyphicon-barcode" style="font-size:48px" text-align="center";></span><br>CONSULTA PRODUTOS</button></a>
+<!--/5 BOTAO-->         </div>
+<!--/3 BOTAO-->       </div>    
+<!--/2 BOTAO-->     </div>    
+<!--/1 BOTAO-->  </div>   
+                  
+<!--consulta-->
+<!--1 conteudo--><div id="divConteudoPrincipal">
+                    <?php include 'conexao.php' ?>
+                  <?php
+                  $page = $_GET["page"];
+                  if(isset($page)) {
+                  $page = $page;
+                  } else {
+                  $page = 1;
+                  }
+    //verifica a página atual caso seja informada na URL, senão atribui como 1ª página
+      //  $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
+ 
+    //seleciona todos os itens da tabela
+        $consulta = "SELECT * FROM clientes";
+        $clientes = mysql_query($consulta);
+   
+    //conta o total de itens
+        $total = mysql_num_rows($clientes);
+   
+    //seta a quantidade de itens por página, neste caso, 2 itens
+        $registros = 10;
+        $max_links = 3;
+    // Exibe o primeiro link "primeira página", que não entra na contagem acima(3)
+   
+    //calcula o número de páginas arredondando o resultado para cima
+        $numPaginas = ceil($total/$registros);
+   
+    //variavel para calcular o início da visualização com base na página atual
+        $inicio = ($registros*$page)-$registros;
+ 
+    //seleciona os itens por página
+        
+        $consulta = "SELECT * FROM clientes order by CODIGO LIMIT $inicio , $registros";
+        $clientes = mysql_query($consulta);
+        $total = mysql_num_rows($clientes);
+ 
+    echo '<table class="table table-hover">';  // opening table tag
+echo '<thead>
+      <tr>
+        <th class="info">Codigo</th>
+        <th class="info">CPF/CNPJ</th>
+        <th class="info">Razao</th>
+        <th class="info">Nome</th>
+        <th class="info">Endereço</th>
+        <th class="info">Numero</th>
+    </tr>
+    </thead>';
+while ($produto = mysql_fetch_array($clientes)) {
+echo '<tr>
+
+      <td>'.$produto['CODIGO'].'</td>
+      <td>'.$produto['CPFCNPJ'].'</td>
+      <td>'.$produto['RAZAO'].'</td>
+      <td>'.$produto['NOME'].'</td>
+      <td>'.$produto['ENDERECO'].'</td>
+      <td>'.$produto['NUMERO'].'</td>';
+echo '</tr>'; 
+}
+echo '</table>';
+;
+         
+echo '
+<center>
+<nav>
+  <ul class="pagination">
+    <li>';
+      echo "<a href='consultaClient.php?page=1'>primeira pagina</a> ";
+      echo '</a>
+    </li>';
+
+
+// Cria um for() para exibir os 3 links antes da página atual
+for($i = $page-$max_links; $i <= $page-1; $i++) {
+// Se o número da página for menor ou igual a zero, não faz nada
+// (afinal, não existe página 0, -1, -2..)
+if($i <=0) {
+//faz nada
+// Se estiver tudo OK, cria o link para outra página
+} else {
+echo "<li><a href='consultaClient.php?page=$i'>$i</a></li>";
+}
+}
+// Exibe a página atual, sem link, apenas o número
+echo "<li class='disabled'><a href='consultaClient.php?page=$i'>$i</a></li>";
+// Cria outro for(), desta vez para exibir 3 links após a página atual
+for($i = $page+1; $i <= $page+$max_links; $i++) {
+// Verifica se a página atual é maior do que a última página. Se for, não faz nada.
+if($i > $numPaginas)
+{
+
+}
+// Se tiver tudo Ok gera os links.
+else
+{
+echo "<li><a href='consultaClient.php?page=$i'>$i</a></li>";
+}
+}
+// Exibe o link "última página"
+    echo '<li>';
+    echo "<a href='consultaClient.php?page=$numPaginas'>ultima pagina</a> ";
+    echo '</li>
+  </ul>
+</nav>';
+?>
+<!--/1 conteudo--></div>    
+                  <!--final consulta-->
+
+
+<!--/4 /MAE DOS CONTEUDOS-->     </div>
+<!--/3-->   </div>  
+<!--/1--> </div>
+
+
+<!--fechamento das divs conteudo-->
+
+
+
 <!--Fechamento botoes-->
 
 
@@ -136,6 +279,13 @@ header("Location: ../index1.php");
 <!-- panel "novidades"-->
 <!--/ fechamento panel principal-->
 <!--/2--> </div>
+            <div id="footer">
+              <div class="container">
+                  <p>&copy; Copyright <a href="empresa.php">Techsoft </a>Sistema de Gerenciamento Comerciais</p>
+                    <p><a href="http://techsoft.net.br/">Home | </a><a href="empresa.php">Empresa | </a><a href="contato.php"> Contato</a>
+                  <B class="endereco">Av. Pedro Taques, 399, Lj 01 - Zona Sete - Maringá - PR - Fone/Fax:(44) 3024-9963</B></p>
+              </div>
+            </div>
 <!--/1--> </div>
 <!---->
 <!--/ fechamento panel principal--> 
