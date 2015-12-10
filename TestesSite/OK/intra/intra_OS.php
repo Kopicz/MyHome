@@ -132,7 +132,7 @@ header("Location: ../index1.php");
 <!--/4--> </nav>
 <!--Fechamento navbar-->
 <!--abertura divs dos conteudos-->
-<!--1--> <div class="panel panel-primary span10">
+<!--1--> <div class="panel panel-primary">
 <!--2--> <div class="panel-heading">Teste Intranet<!--/2--></div>
 <!--3-->    <div class="panel-body">
 <!--4 MAE DOS CONTEUDOS-->      <div>
@@ -151,10 +151,12 @@ header("Location: ../index1.php");
 <!--/5 BOTAO-->         </div>
 <!--/3 BOTAO-->       </div>    
 <!--/2 BOTAO-->     </div>    
+
 <!--/1 BOTAO-->  </div>   
                   
 <!--consulta-->
-<!--1 conteudo--><div id="divConteudoPrincipal">
+<!--1 conteudo--><div class="panel panel-primary" id="divConteudoPrincipal">
+                   <div class="panel-heading" ><center><b>Consulta Clientes<!--/2--></b></center></div>
                     <?php include 'conexao.php' ?>
                   <?php
                   $page = $_GET["page"];
