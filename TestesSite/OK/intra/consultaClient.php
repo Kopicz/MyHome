@@ -221,7 +221,8 @@ $maskcnpj = mask($cnpj,'##.###.###/####-##');
  //echo mask($cpf,'###.###.###-##');
   echo '<tr>
     <td>'.$client['CODIGO'].'</td>
-    <td>'.$maskcpf. $maskcnpj.'</td>
+    <td>'.if ($testecpf == 'F'){
+      .'</td>
     
     <td>'.$client['RAZAO'].'</td>
     <td>'.$client['NOME'].'</td>
