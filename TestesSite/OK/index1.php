@@ -42,8 +42,13 @@
           float: right;
         }
     </style>
+    <script src="js/jquery-1.2.6.pack.js" type="text/javascript"></script><script src="js/jquery.maskedinput-1.1.4.pack.js" type="text/javascript" /></script>
+<!--bootstrap-->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
+<!--JQuery / Bootstrap-->  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!--javascript / Bootstrap-->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
   </head>
   <body>
       <!--/COMEÇO panel principal-->
@@ -55,39 +60,30 @@
         <img src="img/logo.png" class="img-responsive center-block" alt="Cinque Terre" width="650" height="125">
       </div>
 
-    <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default">
   <div class="container-fluid">
-    
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
       <a class="navbar-brand" href="http://techsoft.net.br/">Home</a>
     </div>
-
-    
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li class="active"><a href="empresa.html">Empresa<span class="sr-only">(current)</span></a></li>
         <li><a href="sistema.html">Sistema</a></li>
-        <li class="dropdown">
-          <a href="sac.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Fale Conosco<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="contato.html">Contato</a></li>
-            
-            <li><a href="cases.html">Casos de Sucesso</a></li>
-            <li class="divider"></li>
-            <li><a href="representantes.html">Nossos Representantes</a></li>
-          </ul>
-        </li>
+          <li class="dropdown">
+            <a href="sac.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Fale Conosco<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="contato.html">Contato</a></li>
+              <li class="divider"></li>
+              <li><a href="cases.html">Casos de Sucesso</a></li>
+              <li class="divider"></li>
+              <li><a href="representantes.html">Nossos Representantes</a></li>
+            </ul>
+          </li>
       </ul>
       <ul class="nav navbar-nav navbar-left">
         <li><a href="parceiros.html">Parceiros</a></li>
         <li class="dropdown">
-          <a href="suporte.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Suporte<span class="caret"></span></a>
+         <a href="suporte.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Suporte<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li><a href="utilitarios.html">Utilitarios</a></li>
             <li class="disabled"><a tabindex="-1" href="perguntas.html">Perguntas Frequentes</a></li>
@@ -99,44 +95,31 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-            <button id="btnLogin" type="button" class="btn btn-defaut" data-toggle="modal" data-target=".bs-example-modal-lg"><span class="glyphicon glyphicon-user"></span> Sign Up</button>
-            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-              <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  ...
-                </div>
-              </div>
-            </div> 
-              
-              <button id="btnLogin"type="button" class="btn btn-defaut" data-toggle="modal" data-target=".bs-example-modal-sm"><span class="glyphicon glyphicon-log-in"></span> Login</button>
-              <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                <div class="modal-dialog modal-body">
-                  <div class="modal-content">
-                    <div class="controle">
-                          <form class="form-signin" enctype="multipart/form-data" name="formLogin" method="post" action="validation/logar.php">
-                            <img id="imgModel"src="img/logo.png" class="img-responsive" >
-                            <label for="inputext" class="sr-only">Email</label>
-                            <input id="usuario" name="usuario" type="email" class="form-control" placeholder="TechSoft@TechSoft.net.br" >
-                            <label  for="inputPassword" class="sr-only">Senha</label>
-                            <input id="senha" name="senha" type="password" ng-model="user.senha" class="form-control" placeholder="Senha..." required>
-                            <div class="checkbox">
-                              <label  id="lblLembrar">
-                                <input  type="checkbox" value="lembre-me"> Lembre - Me
-                              </label>
-                            </div>
-                            <button name="logar" id="logar" class="btn btn-lg btn-primary" type="submit" >Fazer Login</button>
-                            <button class="btn btn-lg btn-danger" type="submit" > Cadastre-se</button>
-                  
-
-                          </form>
-                          
-                        </div>
-
+        <button id="btnLogin"type="button" class="btn btn-defaut" data-toggle="modal" data-target=".bs-example-modal-sm"><span class="glyphicon glyphicon-log-in"></span> Login</button>
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-body">
+            <div class="modal-content">
+              <div class="controle">
+                <form class="form-signin" enctype="multipart/form-data" name="formLogin" method="post" action="validation/logar.php">
+                  <img id="imgModel"src="img/logo.png" class="img-responsive" >
+                  <label for="inputext" class="sr-only">Email</label>
+                  <script type="text/javascript">$(document).ready(function(){  $("#usuario").mask("99.999.999/9999-99");});</script>
+                  <input id="usuario" name="usuario" type="text" class="form-control" placeholder="TechSoft@TechSoft.net.br" >
+                  <label  for="inputPassword" class="sr-only">Senha</label>
+                  <input id="senha" name="senha" type="password" ng-model="user.senha" class="form-control" placeholder="Senha..." required>
+                  <div class="checkbox">
+                    <label  id="lblLembrar">
+                      <input  type="checkbox" value="lembre-me"> Lembre - Me
+                    </label>
                   </div>
-                </div>
+                  <button name="logar" id="logar" class="btn btn-lg btn-primary" type="submit" >Fazer Login</button>
+                  <button class="btn btn-lg btn-danger" type="submit" > Cadastre-se</button>
+                </form>
               </div>
+            </div>
+          </div>
+        </div>
       </ul> 
-
     </div>
   </div>
 </nav>
@@ -145,17 +128,15 @@
 <!-- panel "novidades"-->
       <div class="panel panel-primary">
         <div class="panel-heading">arquivos</div>
-        <div class="panel-body">
-                <div class="panelPrincipal">               
-                  <div>
-                    <h2><b>Versao</b></h2>
-                      <p>
-                      <p>
-                      <form method="get" action="ferramentas.php">
+          <div class="panel-body">
+            <div class="panelPrincipal">               
+              <div>
+                <h2><b>Versao</b></h2>
+                  <form method="get" action="ferramentas.php">
                         <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
                         <!--
                           <?php
-                          // definindo o tempo limite da aplicação o time default é de 30 segundos - você setando para 0  fica um tempo indefinido
+                        /*  // definindo o tempo limite da aplicação o time default é de 30 segundos - você setando para 0  fica um tempo indefinido
                           set_time_limit(0);
 
                           // INFORMAÇÕES DE ACESSO AO SERVIDOR
@@ -188,7 +169,7 @@
                           if (file_exists($filename)) {
                               echo "$filename foi modificado em: " . date ("F d Y H:i:s.", filectime($filename));
                           }
-
+*/
                           ?>
                         -->
                         <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -267,11 +248,7 @@
 
 <!-- /panel "novidades"-->
 
-<!--JQuery / Bootstrap-->  
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
-<!--javascript / Bootstrap-->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
       </div>
       </div>
          <div id="footer">
@@ -291,3 +268,61 @@
     </div>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <?php
+  function mask($val, $mask)
+  {
+   $maskared = '';
+   $k = 0;
+   for($i = 0; $i<=strlen($mask)-1; $i++)
+   {
+   if($mask[$i] == '#')
+   {
+   if(isset($val[$k]))
+   $maskared .= $val[$k++];
+   }
+   else
+   {
+   if(isset($mask[$i]))
+   $maskared .= $mask[$i];
+   }
+   }
+   return $maskared;
+  }
+  ?>
+
+  <?php
+  $cnpj = "11222333000199";
+  $cpf = "00100200300";
+  $cep = "08665110";
+  $data = "10102010";
+  echo mask($cnpj,'##.###.###/####-##');
+  echo mask($cpf,'###.###.###-##');
+  echo mask($cep,'#####-###');
+  echo mask($data,'##/##/####');
+  ?>

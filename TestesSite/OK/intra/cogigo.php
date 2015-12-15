@@ -144,7 +144,7 @@ header("Location: ../index1.php");
 
 <div class="container-fluid" id="divBotao">
   <div class="row-fluid">
-    <div class="span2">
+ <!--    <div class="span2">
       <div id="divBotoes">
             <a href="consultaClient.php?page=1"> <button  type="button" class="btn btn-info" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
             <span class="glyphicon glyphicon-user" style="font-size:48px" text-align="center";></span><br>CONSULTA CLIENTES</button></a>
@@ -157,7 +157,7 @@ header("Location: ../index1.php");
     </div>    
   </div>    
 </div>    
-
+ -->
 
 
 
@@ -204,6 +204,7 @@ $page = 1;
  
     //seleciona os itens por página
         
+      
         $consulta = "SELECT * FROM clientes order by CODIGO LIMIT $inicio , $registros";
         $clientes = mysql_query($consulta);
         $total = mysql_num_rows($clientes);

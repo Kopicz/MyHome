@@ -65,7 +65,7 @@ echo '<tr>
         <td>'.$produto['DESCRICAO'].'</td>
         <td>'.$produto['ESTOQUE'].'</td>
         <td>'.$produto['ESTOQUEPEN'].'</td>
-        <td>'.'R$ '.number_format($num, 5).'</td>                 
+        <td>'.'R$ '.number_format($num, 2).'</td>                 
       </tr>';
 echo '</tr>'; 
     //    <td>'.'R$ '.$produto['PRECOVENDA'].'</td>

@@ -127,7 +127,13 @@ header("Location: ../index1.php");
       </ul>
       <ul class="nav navbar-nav navbar-right">
               <a href="?sair"><button  id="btnLogin"type="button" class="btn btn-defaut" ><span class="glyphicon glyphicon-log-out"></span> Logout</button></a>
-             
+              <?php
+              if(isset($_REQUEST['sair'])){ 
+                session_destroy();
+                header("Location: ../index1.php");  
+                }
+
+              ?>
             <div tabindex="-1">
               </div>
       </ul> 

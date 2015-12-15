@@ -135,6 +135,29 @@ header("Location: ../index1.php");
 <!---------------------------------------------------------------------------------------------------------------------------------------------------------->
                     <div class="">
                     <?php include 'conexao.php' ?>
+
+  <?php
+  function mask($val, $mask)
+  {
+   $maskared = '';
+   $k = 0;
+   for($i = 0; $i<=strlen($mask)-1; $i++)
+   {
+   if($mask[$i] == '#')
+   {
+   if(isset($val[$k]))
+   $maskared .= $val[$k++];
+   }
+   else
+   {
+   if(isset($mask[$i]))
+   $maskared .= $mask[$i];
+   }
+   }
+   return $maskared;
+  }
+  ?>
+
 <?php
 $page = $_GET["page"];
 if(isset($page)) {
@@ -157,10 +180,10 @@ $page = 1;
         $max_links = 3;
     // Exibe o primeiro link "primeira página", que não entra na contagem acima(3)
    
-    //calcula o número de páginas arredondando o resultado para cima
         $numPaginas = ceil($total/$registros);
    
     //variavel para calcular o início da visualização com base na página atual
+    //calcula o número de páginas arredondando o resultado para cima
         $inicio = ($registros*$page)-$registros;
  
     //seleciona os itens por página
@@ -180,16 +203,31 @@ echo '<thead>
         <th class="info">Numero</th>
     </tr>
     </thead>';
-while ($produto = mysql_fetch_array($clientes)) {
-echo '<tr>
+  
 
-      <td>'.$produto['CODIGO'].'</td>
-      <td>'.$produto['CPFCNPJ'].'</td>
-      <td>'.$produto['RAZAO'].'</td>
-      <td>'.$produto['NOME'].'</td>
-      <td>'.$produto['ENDERECO'].'</td>
-      <td>'.$produto['NUMERO'].'</td>';
-echo '</tr>'; 
+while ($client = mysql_fetch_array($clientes)) {
+$testecpf = $client['TIPOFJ'];
+
+if ($testecpf == 'F'){
+  $cpf = $client['CPFCNPJ'];  
+}else{
+  $cnpj = $client['CPFCNPJ'];
+}
+$maskcpf = mask($cpf,'###.###.###-##');
+$maskcnpj = mask($cnpj,'##.###.###/####-##');
+
+
+ 
+ //echo mask($cpf,'###.###.###-##');
+  echo '<tr>
+    <td>'.$client['CODIGO'].'</td>
+    <td>'.$maskcpf. $maskcnpj.'</td>
+    
+    <td>'.$client['RAZAO'].'</td>
+    <td>'.$client['NOME'].'</td>
+    <td>'.$client['ENDERECO'].'</td>
+    <td>'.$client['NUMERO'].'</td>';
+  echo '</tr>'; 
 }
 echo '</table>';
 ;
