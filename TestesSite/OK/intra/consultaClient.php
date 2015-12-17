@@ -214,14 +214,14 @@ if ($consulta_cpf == 'F'){
   $mask_cnpj = $client['CPFCNPJ'];
 }  
 
-$mask = $mask_cpf;
+$mask = $client['CPFCNPJ'];
 if(strlen($mask) == 11){
-  $mask = mask('###.###.###-##');
+  $mask = mask($mask,'###.###.###-##');
 }
 
 $mask2 = $mask_cnpj;
 if(strlen($mask2) == 14){
-  $mask = mask($mask_cnpj,'###.###.###-###-##');
+  $mask = mask($mask_cnpj,'##.###.###/####-##');
 }
 
  //echo mask($cpf,'###.###.###-##');
