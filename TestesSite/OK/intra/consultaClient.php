@@ -206,24 +206,28 @@ echo '<thead>
   
 
 while ($client = mysql_fetch_array($clientes)) {
-$testecpf = $client['TIPOFJ'];
+$consulta_cpf = $client['TIPOFJ'];
 
-if ($testecpf == 'F'){
-  $cpf = $client['CPFCNPJ'];  
+if ($consulta_cpf == 'F'){
+  $mask_cpf = $client['CPFCNPJ'];  
 }else{
-  $cnpj = $client['CPFCNPJ'];
+  $mask_cnpj = $client['CPFCNPJ'];
+}  
+
+$mask = $mask_cpf;
+if(strlen($mask) == 11){
+  $mask = mask('###.###.###-##');
 }
-$maskcpf = mask($cpf,'###.###.###-##');
-$maskcnpj = mask($cnpj,'##.###.###/####-##');
 
+$mask2 = $mask_cnpj;
+if(strlen($mask2) == 14){
+  $mask = mask($mask_cnpj,'###.###.###-###-##');
+}
 
- 
  //echo mask($cpf,'###.###.###-##');
   echo '<tr>
     <td>'.$client['CODIGO'].'</td>
-    <td>'.if ($testecpf == 'F'){
-      .'</td>
-    
+    <td>'.$mask.'</td>
     <td>'.$client['RAZAO'].'</td>
     <td>'.$client['NOME'].'</td>
     <td>'.$client['ENDERECO'].'</td>
