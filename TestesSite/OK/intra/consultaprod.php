@@ -59,7 +59,7 @@ echo '<thead>
     </thead>';
    
 while ($produto = mysql_fetch_array($produtos)) {
-  $num = (int) $produto['PRECOVENDA'];
+  $num = (float) $produto['PRECOVENDA'];
 echo '<tr>
         <td>'.$produto['CODIGO'].'</td>
         <td>'.$produto['DESCRICAO'].'</td>
