@@ -146,6 +146,8 @@ header("Location: ../index1.php");
 <!--2--> <div class="panel-heading">Teste Intranet<!--/2--></div>
 <!--3-->    <div class="panel-body">
 <!--4 MAE DOS CONTEUDOS-->      <div>
+
+<!--1 BOTAO-->    <div class="container-fluid" id="divBotao">
 <div class="container-fluid" id="divBotao">
 <!--2 BOTAO-->      <div class="row-fluid">
 <!--3 BOTAO-->        <div class="span2">
@@ -177,11 +179,10 @@ header("Location: ../index1.php");
 <!--/3 BOTAO-->       </div>    
 <!--/2 BOTAO-->     </div>    
 
-<!--/1 BOTAO-->  </div>   
-                  
+<!--/1 BOTAO-->  </div>                     
 <!--consulta-->
 <!--1 conteudo--><div class="panel panel-primary" id="divConteudoPrincipal"  style="background-color:#FFF" id="ConteudoConsult">
-                   <div class="panel-heading" ><center><b>CONSULTA CLIENTES<!--/2--></b></center></div>
+                   <div class="panel-heading" ><center><b>CONSULTA FORNECEDOR<!--/2--></b></center></div>
                     <?php include 'conexao.php' ?>
 
   <?php
@@ -217,7 +218,7 @@ $page = 1;
       //  $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
  
     //seleciona todos os itens da tabela
-        $consulta = "SELECT * FROM clientes WHERE CLIFOR IN ('C') ";
+        $consulta = "SELECT * FROM clientes WHERE CLIFOR IN ('F') ";
         $clientes = mysql_query($consulta);
    
     //conta o total de itens
@@ -236,7 +237,7 @@ $page = 1;
  
     //seleciona os itens por página
         
-        $consulta = "SELECT * FROM clientes WHERE CLIFOR IN ('C') order by CODIGO LIMIT $inicio , $registros" ;
+        $consulta = "SELECT * FROM clientes WHERE CLIFOR IN ('F') order by CODIGO LIMIT $inicio , $registros" ;
         $clientes = mysql_query($consulta);
         $total = mysql_num_rows($clientes);
  
