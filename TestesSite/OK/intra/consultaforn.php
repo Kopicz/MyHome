@@ -146,8 +146,6 @@ header("Location: ../index1.php");
 <!--2--> <div class="panel-heading">Teste Intranet<!--/2--></div>
 <!--3-->    <div class="panel-body">
 <!--4 MAE DOS CONTEUDOS-->      <div>
-
-<!--1 BOTAO-->    <div class="container-fluid" id="divBotao">
 <div class="container-fluid" id="divBotao">
 <!--2 BOTAO-->      <div class="row-fluid">
 <!--3 BOTAO-->        <div class="span2">
@@ -173,16 +171,17 @@ header("Location: ../index1.php");
 <!--/5 BOTAO-->         </div>
                         <p>
                         <div id="divBotoes">
-                          <a href="consultaprod.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
+                          <a href="http://techsoft.net.br/Chat/chat.html"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
                           <span class="glyphicon glyphicon-fire" style="font-size:48px" text-align="center";></span><br>SUPORTE</button></a>
 <!--/5 BOTAO-->         </div>
 <!--/3 BOTAO-->       </div>    
 <!--/2 BOTAO-->     </div>    
 
-<!--/1 BOTAO-->  </div>                     
+<!--/1 BOTAO-->  </div>   
+                  
 <!--consulta-->
 <!--1 conteudo--><div class="panel panel-primary" id="divConteudoPrincipal"  style="background-color:#FFF" id="ConteudoConsult">
-                   <div class="panel-heading" ><center><b>CONSULTA FORNECEDOR<!--/2--></b></center></div>
+                   <div class="panel-heading" ><center><b>CONSULTA CLIENTES<!--/2--></b></center></div>
                     <?php include 'conexao.php' ?>
 
   <?php
@@ -218,7 +217,7 @@ $page = 1;
       //  $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
  
     //seleciona todos os itens da tabela
-        $consulta = "SELECT * FROM clientes WHERE CLIFOR IN ('F') ";
+        $consulta = "SELECT * FROM clientes WHERE CLIFOR IN ('C') ";
         $clientes = mysql_query($consulta);
    
     //conta o total de itens

@@ -171,7 +171,7 @@ header("Location: ../index1.php");
 <!--/5 BOTAO-->         </div>
                         <p>
                         <div id="divBotoes">
-                          <a href="consultaprod.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
+                          <a href="http://techsoft.net.br/Chat/chat.html"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
                           <span class="glyphicon glyphicon-fire" style="font-size:48px" text-align="center";></span><br>SUPORTE</button></a>
 <!--/5 BOTAO-->         </div>
 <!--/3 BOTAO-->       </div>    
