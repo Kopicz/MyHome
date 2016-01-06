@@ -162,17 +162,17 @@ header("Location: ../index1.php");
                         <p>
                         <div id="divBotoes">
                           <a href="consultaforn.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
-                          <span class="glyphicon glyphicon-eye-open" style="font-size:48px" text-align="center";></span><br>CONSULTA FORNECEDOR</button></a>
+                          <span class="glyphicon glyphicon-briefcase" style="font-size:48px" text-align="center";></span><br>CONSULTA FORNECEDOR</button></a>
 <!--/5 BOTAO-->         </div>
                         <p>
                         <div id="divBotoes">
                           <a href="consultaprod.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
-                          <span class="glyphicon glyphicon-road" style="font-size:48px" text-align="center";></span><br>WEB O.S</button></a>
+                          <span class="glyphicon glyphicon-tasks" style="font-size:48px" text-align="center";></span><br>WEB O.S</button></a>
 <!--/5 BOTAO-->         </div>
                         <p>
                         <div id="divBotoes">
                           <a href="http://techsoft.net.br/Chat/chat.html"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
-                          <span class="glyphicon glyphicon-fire" style="font-size:48px" text-align="center";></span><br>SUPORTE</button></a>
+                          <span class="glyphicon glyphicon-cog" style="font-size:48px" text-align="center";></span><br>SUPORTE</button></a>
 <!--/5 BOTAO-->         </div>
 <!--/3 BOTAO-->       </div>    
 <!--/2 BOTAO-->     </div>    
@@ -230,7 +230,7 @@ echo '<thead>
     </thead>';
    
 while ($produto = mysql_fetch_array($produtos)) {
-  $num = (float) $produto['PRECOVENDA'];
+  $num = $produto['PRECOVENDA']; //no BD tem que que estar com as casas decimasis separadas com ponto nao virgula
 echo '<tr>
         <td>'.$produto['CODIGO'].'</td>
         <td>'.$produto['DESCRICAO'].'</td>

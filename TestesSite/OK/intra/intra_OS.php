@@ -147,38 +147,39 @@ header("Location: ../index1.php");
 <!--3-->    <div class="panel-body">
 <!--4 MAE DOS CONTEUDOS-->      <div>
 
+<!--1 BOTAO-->   
 <!--1 BOTAO-->    <div class="container-fluid" id="divBotao">
 <!--2 BOTAO-->      <div class="row-fluid">
 <!--3 BOTAO-->        <div class="span2">
-<!--4 BOTAO-->          <div id="divBotoes">
-                            <a href="consultaClient.php?page=1"> <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
-                            <span class="glyphicon glyphicon-user" style="font-size:48px" text-align="center";></span><br>CONSULTA CLIENTES</button></a>
-<!--/4 BOTAO-->         </div>
-                           <p>
-<!--5 BOTAO-->          <div id="divBotoes">
+<!--4 BOTAO-->           <div id="divBotoes">
                           <a href="consultaprod.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
                           <span class="glyphicon glyphicon-barcode" style="font-size:48px" text-align="center";></span><br>CONSULTA PRODUTOS</button></a>
 <!--/5 BOTAO-->         </div>
+                           <p>
+            <div id="divBotoes">
+                            <a href="consultaClient.php?page=1"> <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
+                            <span class="glyphicon glyphicon-user" style="font-size:48px" text-align="center";></span><br>CONSULTA CLIENTES</button></a>
+<!--/4 BOTAO-->         </div>
+<!--5 BOTAO-->         
                         <p>
                         <div id="divBotoes">
-                          <a href="consultaprod.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
-                          <span class="glyphicon glyphicon-eye-open" style="font-size:48px" text-align="center";></span><br>CONSULTA FORNECEDOR</button></a>
+                          <a href="consultaforn.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
+                          <span class="glyphicon glyphicon-briefcase" style="font-size:48px" text-align="center";></span><br>CONSULTA FORNECEDOR</button></a>
 <!--/5 BOTAO-->         </div>
                         <p>
                         <div id="divBotoes">
                           <a href="consultaprod.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
-                          <span class="glyphicon glyphicon-road" style="font-size:48px" text-align="center";></span><br>WEB O.S</button></a>
+                          <span class="glyphicon glyphicon-tasks" style="font-size:48px" text-align="center";></span><br>WEB O.S</button></a>
 <!--/5 BOTAO-->         </div>
                         <p>
                         <div id="divBotoes">
-                          <a href="consultaprod.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
-                          <span class="glyphicon glyphicon-fire" style="font-size:48px" text-align="center";></span><br>SUPORTE</button></a>
+                          <a href="http://techsoft.net.br/Chat/chat.html"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
+                          <span class="glyphicon glyphicon-cog" style="font-size:48px" text-align="center";></span><br>SUPORTE</button></a>
 <!--/5 BOTAO-->         </div>
 <!--/3 BOTAO-->       </div>    
 <!--/2 BOTAO-->     </div>    
 
-<!--/1 BOTAO-->  </div>   
-                  
+<!--/1 BOTAO-->  </div> 
 <!--consulta-->
 <!--1 conteudo--><div class="panel panel-primary" id="divConteudoPrincipal"  style="background-color:#FFF" id="ConteudoConsult">
                    <div class="panel-heading" ><center><b>SEJAM BEM VINDOS!!!<!--/2--></b></center></div>
