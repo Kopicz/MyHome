@@ -11,6 +11,7 @@ header("Location: ../index1.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Techsoft | Gerenciamento Comercial</title>
+    <link rel="shortcut icon" href="../img/icones.png" />
     <style>
         .corFundo{
           background: url(../img/corFundo.png);
@@ -54,11 +55,18 @@ header("Location: ../index1.php");
           height: 300px;
           color: red;
         }
-        .btn-primary{
+        #btnMenuIntra{
           width: 200px;
 
         }
-
+        #divfiltros{
+          height: 100px;
+          width: 100%;
+          background:red;
+        }
+        #btnbuscaprod{
+         
+        }
         .endereco{
             float: right;
             text-align: right;
@@ -149,13 +157,19 @@ header("Location: ../index1.php");
 <div class="container-fluid" id="divBotao">
 <!--2 BOTAO-->      <div class="row-fluid">
 <!--3 BOTAO-->        <div class="span2">
+<!--"6" BOTAO-->          <div id="divBotoes">
+                            <a href="indexlog.php"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
+                           <span class="glyphicon glyphicon-home" style="font-size:48px" text-align="center";></span><br>HOME INTRANET</button></a>
+<!--/"6" BOTAO-->         </div>
+                          <p>
+<!--/5 BOTAO-->         </div>
 <!--4 BOTAO-->           <div id="divBotoes">
                           <a href="consultaprod.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
                           <span class="glyphicon glyphicon-barcode" style="font-size:48px" text-align="center";></span><br>CONSULTA PRODUTOS</button></a>
 <!--/5 BOTAO-->         </div>
                            <p>
             <div id="divBotoes">
-                            <a href="consultaClient.php?page=1"> <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
+                            <a href="consultaClient.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
                             <span class="glyphicon glyphicon-user" style="font-size:48px" text-align="center";></span><br>CONSULTA CLIENTES</button></a>
 <!--/4 BOTAO-->         </div>
 <!--5 BOTAO-->         
@@ -180,131 +194,138 @@ header("Location: ../index1.php");
 <!--/1 BOTAO-->  </div>   
                   
 <!--consulta-->
-<!--1 conteudo--><div class="panel panel-primary" id="divConteudoPrincipal"  style="background-color:#FFF" id="ConteudoConsult">
+<!--1 conteudo--> <div class="panel panel-primary" id="divConteudoPrincipal"  style="background-color:#FFF" id="ConteudoConsult">
                    <div class="panel-heading" ><center><b>CONSULTA CLIENTES<!--/2--></b></center></div>
-                    <?php include 'conexao.php' ?>
-
- <?php
-$page = $_GET["page"];
-if(isset($page)) {
-$page = $page;
-} else {
-$page = 1;
-}
-    //verifica a página atual caso seja informada na URL, senão atribui como 1ª página
-      //  $pagina = (isset($_GET['pagina']))? $_GET['pagina'] : 1;
- 
-    //seleciona todos os itens da tabela
-        $consulta = "SELECT * FROM produtos";
-        $produtos = mysql_query($consulta);
-   
-    //conta o total de itens
-        $total = mysql_num_rows($produtos);
-   
-    //seta a quantidade de itens por página, neste caso, 2 itens
-        $registros = 10;
-        $max_links = 3;
-    // Exibe o primeiro link "primeira página", que não entra na contagem acima(3)
-   
-    //calcula o número de páginas arredondando o resultado para cima
-        $numPaginas = ceil($total/$registros);
-   
-    //variavel para calcular o início da visualização com base na página atual
-        $inicio = ($registros*$page)-$registros;
- 
-    //seleciona os itens por página
-        
-        $consulta = "SELECT * FROM produtos order by CODIGO LIMIT $inicio , $registros";
-        $produtos = mysql_query($consulta);
-        $total = mysql_num_rows($produtos);
- 
-    echo '<table class="table table-hover">';  // opening table tag
-echo '<thead>
-     <tr>
-        <th class="info">Codigo</th>
-        <th class="info">Descrição</th>
-        <th class="info">Estoque</th>
-        <th class="info">Estoque Pendente</th>
-        <th class="info">Preco de Venda</th>
-      </tr>
-    </thead>';
-   
-while ($produto = mysql_fetch_array($produtos)) {
-  $num = $produto['PRECOVENDA']; //no BD tem que que estar com as casas decimasis separadas com ponto nao virgula
-echo '<tr>
-        <td>'.$produto['CODIGO'].'</td>
-        <td>'.$produto['DESCRICAO'].'</td>
-        <td>'.$produto['ESTOQUE'].'</td>
-        <td>'.$produto['ESTOQUEPEN'].'</td>
-        <td>'.'R$ '.number_format($num, 2).'</td>                 
-      </tr>';
-echo '</tr>'; 
-    //    <td>'.'R$ '.$produto['PRECOVENDA'].'</td>
-}
-echo '</table>';
-;
-         
-
-echo '
-<center>
-<nav>
-  <ul class="pagination">
-    <li>';
-      echo "<a href='consultaprod.php?page=1'>primeira pagina</a> ";
-      echo '</a>
-    </li>';
+<!--FILTROS-->    <div id="divfiltros">
+                  <form name="formbusca" method="POST" action="result.php">
+                    <input type="text" name="txtbuscaprod" id="txtbuscaprod" size="35" > 
+                    <button  id="btnbuscaprod" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
+                     <a href="indexlog.php"><button id="btnbuscaprod" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-remove" style="color:red"></span> Fechar</button></a>
+                  </form>    
 
 
-// Cria um for() para exibir os 3 links antes da página atual
-for($i = $page-$max_links; $i <= $page-1; $i++) {
-// Se o número da página for menor ou igual a zero, não faz nada
-// (afinal, não existe página 0, -1, -2..)
-if($i <=0) {
-//faz nada
-// Se estiver tudo OK, cria o link para outra página
-} else {
-echo "<li><a href='consultaprod.php?page=$i'>$i</a></li>";
-}
-}
-// Exibe a página atual, sem link, apenas o número
-echo "<li class='disabled'><a href='consultaprod.php?page=$i'>$i</a></li>";
-// Cria outro for(), desta vez para exibir 3 links após a página atual
-for($i = $page+1; $i <= $page+$max_links; $i++) {
-// Verifica se a página atual é maior do que a última página. Se for, não faz nada.
-if($i > $numPaginas)
-{
+<!--/FILTROS-->   </div>
+                   <?php include 'conexao.php' ?>
+                      <?php
+                        $page = $_GET["page"];
+                        if(isset($page)) {
+                        $page = $page;
+                        } else {
+                        $page = 1;
+                      }
+                      //verifica a página atual caso seja informada na URL, senão atribui como 1ª página
+                      
+                   
+                      //seleciona todos os itens da tabela
+                          $consulta = "SELECT * FROM produtos WHERE SITUACAO IN ('A')";
+                          $produtos = mysql_query($consulta);
+                     
+                      //conta o total de itens
+                          $total = mysql_num_rows($produtos);
+                     
+                      //seta a quantidade de itens por página, neste caso, 2 itens
+                          $registros = 10;
+                          $max_links = 3;
+                      // Exibe o primeiro link "primeira página", que não entra na contagem acima(3)
+                     
+                      //calcula o número de páginas arredondando o resultado para cima
+                          $numPaginas = ceil($total/$registros);
+                     
+                      //variavel para calcular o início da visualização com base na página atual
+                          $inicio = ($registros*$page)-$registros;
+                   
+                      //seleciona os itens por página
+                          
+                          $consulta = "SELECT * FROM produtos WHERE SITUACAO IN ('A') order by CODIGO LIMIT $inicio , $registros";
+                          $produtos = mysql_query($consulta);
+                          $total = mysql_num_rows($produtos);
+                   
+                      echo '<table class="table table-hover">';  // opening table tag
+                  echo '<thead>
+                       <tr>
+                          <th class="info">Codigo</th>
+                          <th class="info">Descrição</th>
+                          <th class="info">Estoque</th>
+                          <th class="info">Estoque Pendente</th>
+                          <th class="info">Preco de Venda</th>
+                        </tr>
+                      </thead>';
+                     
+                  while ($produto = mysql_fetch_array($produtos)) {
+                    $num =(float) $produto['PRECOVENDA']; //no BD tem que que estar com as casas decimasis separadas com ponto nao virgula
+                  echo '<tr>
+                          <td>'.$produto['CODIGO'].'</td>
+                          <td>'.$produto['DESCRICAO'].'</td>
+                          <td>'.$produto['ESTOQUE'].'</td>
+                          <td>'.$produto['ESTOQUEPEN'].'</td>
+                          <td>'.'R$ '.number_format($num, 2).'</td> 
+                        </tr>';
+                  echo '</tr>'; 
+                  }
+                  echo '</table>';
+                  ;
+                           
 
-}
-// Se tiver tudo Ok gera os links.
-else
-{
-echo "<li><a href='consultaprod.php?page=$i'>$i</a></li>";
-}
-}
-// Exibe o link "última página"
-    echo '<li>';
-    echo "<a href='consultaprod.php?page=$numPaginas'>ultima pagina</a> ";
-    echo '</li>
-  </ul>
-</nav>
-<center>';
-      
-        ?>        
-
-<!--/1 conteudo--></div>    
-                  <!--final consulta-->
+                  echo '
+                  <center>
+                  <nav>
+                    <ul class="pagination">
+                      <li>';
+                        echo "<a href='consultaprod.php?page=1'>primeira pagina</a> ";
+                        echo '</a>
+                      </li>';
 
 
-<!--/4 /MAE DOS CONTEUDOS-->     </div>
-<!--/3-->   </div>  
-<!--/1--> </div>
+                  // Cria um for() para exibir os 3 links antes da página atual
+                  for($i = $page-$max_links; $i <= $page-1; $i++) {
+                  // Se o número da página for menor ou igual a zero, não faz nada
+                  // (afinal, não existe página 0, -1, -2..)
+                  if($i <=0) {
+                  //faz nada
+                  // Se estiver tudo OK, cria o link para outra página
+                  } else {
+                  echo "<li><a href='consultaprod.php?page=$i'>$i</a></li>";
+                  }
+                  }
+                  // Exibe a página atual, sem link, apenas o número
+                  echo "<li class='disabled'><a href='consultaprod.php?page=$i'>$i</a></li>";
+                  // Cria outro for(), desta vez para exibir 3 links após a página atual
+                  for($i = $page+1; $i <= $page+$max_links; $i++) {
+                  // Verifica se a página atual é maior do que a última página. Se for, não faz nada.
+                  if($i > $numPaginas)
+                  {
+
+                  }
+                  // Se tiver tudo Ok gera os links.
+                  else
+                  {
+                  echo "<li><a href='consultaprod.php?page=$i'>$i</a></li>";
+                  }
+                  }
+                  // Exibe o link "última página"
+                      echo '<li>';
+                      echo "<a href='consultaprod.php?page=$numPaginas'>ultima pagina</a> ";
+                      echo '</li>
+                    </ul>
+                  </nav>
+                  <center>';
+                        
+                          ?>        
+
+                  <!--/1 conteudo--></div>    
+                                    <!--final consulta-->
 
 
-<!--fechamento das divs conteudo-->
+                  <!--/4 /MAE DOS CONTEUDOS-->     </div>
+                  <!--/3-->   </div>  
+                  <!--/1--> </div>
+
+
+                  <!--fechamento das divs conteudo-->
 
 
 
-<!--Fechamento botoes-->
+                  <!--Fechamento botoes-->
 
 
 

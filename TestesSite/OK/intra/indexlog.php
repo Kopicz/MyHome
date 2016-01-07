@@ -11,6 +11,7 @@ header("Location: ../index1.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Techsoft | Gerenciamento Comercial</title>
+    <link rel="shortcut icon" href="../img/icones.png" />
     <style>
         .corFundo{
           background: url(../img/corFundo.png);
@@ -150,6 +151,11 @@ header("Location: ../index1.php");
 <!--1 BOTAO-->    <div class="container-fluid" id="divBotao">
 <!--2 BOTAO-->      <div class="row-fluid">
 <!--3 BOTAO-->        <div class="span2">
+<!--"6" BOTAO-->          <div id="divBotoes">
+                            <a href="indexlog.php"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
+                           <span class="glyphicon glyphicon-home" style="font-size:48px" text-align="center";></span><br>HOME INTRANET</button></a>
+<!--/"6" BOTAO-->         </div>
+                          <p>
 <!--4 BOTAO-->           <div id="divBotoes">
                           <a href="consultaprod.php?page=1"> <button id="btnMenuIntra" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm" width="500px">
                           <span class="glyphicon glyphicon-barcode" style="font-size:48px" text-align="center";></span><br>CONSULTA PRODUTOS</button></a>
@@ -185,7 +191,7 @@ header("Location: ../index1.php");
                    <div class="panel-heading" ><center><b>SEJAM BEM VINDOS!!!<!--/2--></b></center></div>
                   
 
-                   <center><img src="../img/hack.gif" height="410"></center>
+                   <center>adlkajskldjalk</center>
 <!--/1 conteudo--></div>    
                   <!--final consulta-->
 

@@ -11,6 +11,7 @@ header("Location: ../index1.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Techsoft | Gerenciamento Comercial</title>
+    <link rel="shortcut icon" href="../img/icones.png" />
     <style>
         .corFundo{
           background: url(../img/corFundo.png);
