@@ -197,7 +197,7 @@ header("Location: ../index1.php");
 <!--1 conteudo--> <div class="panel panel-primary" id="divConteudoPrincipal"  style="background-color:#FFF" id="ConteudoConsult">
                    <div class="panel-heading" ><center><b>CONSULTA CLIENTES<!--/2--></b></center></div>
 <!--FILTROS-->    <div id="divfiltros">
-                  <form name="formbusca" method="POST" action="result.php">
+                  <form name="formbusca" method="post" action="result.php?page=1">
                     <input type="text" name="txtbuscaprod" id="txtbuscaprod" size="35" > 
                     <button  id="btnbuscaprod" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
                      <a href="indexlog.php"><button id="btnbuscaprod" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-remove" style="color:red"></span> Fechar</button></a>

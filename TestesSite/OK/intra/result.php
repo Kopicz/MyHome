@@ -217,11 +217,13 @@ header("Location: ../index1.php");
                       
                    
                       //seleciona todos os itens da tabela
-                          $consulta = "SELECT * FROM produtos WHERE SITUACAO IN ('A')";
+                          $buscar = trim($_POST['txtbuscaprod']);
+                          $consulta = "SELECT * FROM produtos WHERE DESCRICAO like %'.$buscar.'% ";
                           $produtos = mysql_query($consulta);
                      
                       //conta o total de itens
                           $total = mysql_num_rows($produtos);
+                     
                      
                       //seta a quantidade de itens por página, neste caso, 2 itens
                           $registros = 10;
@@ -235,8 +237,8 @@ header("Location: ../index1.php");
                           $inicio = ($registros*$page)-$registros;
                    
                       //seleciona os itens por página
-                          $buscar = $_POST['txtbuscaprod'];
-                          $consulta = "SELECT * FROM produtos WHERE SITUACAO IN ('A') AND DESCRICAO '%".$txtbuscaprod."%' order by CODIGO LIMIT $inicio , $registros";
+                          
+                          $consulta = "SELECT * FROM produtos WHERE DESCRICAO like '%".$buscar."%' order by CODIGO LIMIT $inicio , $registros";
                           $produtos = mysql_query($consulta);
                           $total = mysql_num_rows($produtos);
                    
@@ -271,7 +273,7 @@ header("Location: ../index1.php");
                   <nav>
                     <ul class="pagination">
                       <li>';
-                        echo "<a href='consultaprod.php?page=1'>primeira pagina</a> ";
+                        echo "<a href='result.php?page=1'>primeira pagina</a> ";
                         echo '</a>
                       </li>';
 
@@ -284,11 +286,11 @@ header("Location: ../index1.php");
                   //faz nada
                   // Se estiver tudo OK, cria o link para outra página
                   } else {
-                  echo "<li><a href='consultaprod.php?page=$i'>$i</a></li>";
+                  echo "<li><a href='result.php?page=$i'>$i</a></li>";
                   }
                   }
                   // Exibe a página atual, sem link, apenas o número
-                  echo "<li class='disabled'><a href='consultaprod.php?page=$i'>$i</a></li>";
+                  echo "<li class='disabled'><a href='result.php.php?page=$i'>$i</a></li>";
                   // Cria outro for(), desta vez para exibir 3 links após a página atual
                   for($i = $page+1; $i <= $page+$max_links; $i++) {
                   // Verifica se a página atual é maior do que a última página. Se for, não faz nada.
@@ -299,12 +301,12 @@ header("Location: ../index1.php");
                   // Se tiver tudo Ok gera os links.
                   else
                   {
-                  echo "<li><a href='consultaprod.php?page=$i'>$i</a></li>";
+                  echo "<li><a href='result.php?page=$i'>$i</a></li>";
                   }
                   }
                   // Exibe o link "última página"
                       echo '<li>';
-                      echo "<a href='consultaprod.php?page=$numPaginas'>ultima pagina</a> ";
+                      echo "<a href='result.php?page=$numPaginas'>ultima pagina</a> ";
                       echo '</li>
                     </ul>
                   </nav>
