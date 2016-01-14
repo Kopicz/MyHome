@@ -62,7 +62,7 @@ header("Location: ../index1.php");
         #divfiltros{
           height: 100px;
           width: 100%;
-          background:red;
+          background: red;
         }
         #btnbuscaprod{
          
@@ -195,10 +195,21 @@ header("Location: ../index1.php");
                   
 <!--consulta-->
 <!--1 conteudo--> <div class="panel panel-primary" id="divConteudoPrincipal"  style="background-color:#FFF" id="ConteudoConsult">
-                   <div class="panel-heading" ><center><b>CONSULTA CLIENTES<!--/2--></b></center></div>
-<!--FILTROS-->    <div id="divfiltros">
+                   <div class="panel-heading" ><center><b>CONSULTA CLIENTES</b></center></div>
+<!--FILTROS-->    <div id="divfiltros" class="form-group">
                   <form name="formbusca" method="post" action="result.php?page=1">
-                    <input type="text" name="txtbuscaprod" id="txtbuscaprod" size="35" > 
+                    <label class="col-xs-2 control-label">Pesquisar: </label>
+                    <input type="text" name="txtbuscaprod" id="txtbuscaprod" size="35" style="float: left;"> 
+                      
+                          <label class="col-xs-1 control-label">Ordem: </label>
+                          <div class="col-xs-2 selectContainer">
+                              <select class="form-control" name="size">
+                                  <option value="0">Alfábetica</option>
+                                  <option value="1">Código</option>
+                                  <option value="2">Referencia</option>
+                                  <option value="3">Preço de Venda</option>
+                              </select>
+                          </div>
                     <button  id="btnbuscaprod" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
                      <a href="indexlog.php"><button id="btnbuscaprod" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-remove" style="color:red"></span> Fechar</button></a>
                   </form>    
@@ -218,7 +229,7 @@ header("Location: ../index1.php");
                    
                       //seleciona todos os itens da tabela
                           $consulta = "SELECT * FROM produtos WHERE SITUACAO IN ('A')";
-                          $produtos = mysql_query($consulta);
+                          $produtos = mysql_query($consulta)OR DIE(mysql_error());
                      
                       //conta o total de itens
                           $total = mysql_num_rows($produtos);
