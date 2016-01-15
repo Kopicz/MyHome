@@ -200,7 +200,7 @@ header("Location: ../index1.php");
                    <div class="panel-heading" ><center><b>CONSULTA CLIENTES<!--/2--></b></center></div>
 <!--FILTROS-->    <div id="divfiltros">
                   <form name="formbusca" method="POST" action="result.php?page=1">
-                    <input type="text" name="txtbuscaprod" id="txtbuscaprod" size="35" > 
+                    <input type="text" name="txtbuscaprod" id="txtbuscaprod" size="35" value="pas"> 
                     <button  id="btnbuscaprod" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
                      <a href="indexlog.php"><button id="btnbuscaprod" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-remove" style="color:red"></span> Fechar</button></a>
                   </form>    
@@ -221,7 +221,7 @@ header("Location: ../index1.php");
                           $buscar = $_POST ['txtbuscaprod'];
 
                           if ($buscar == ""){
-                            echo "<script>redirectpag();</script>";
+                            //echo "<script>redirectpag();</script>";
                           }
                       //seleciona todos os itens da tabela                  
                           $produtos = mysql_query("SELECT * FROM produtos WHERE CODIGO like '%$buscar%' OR DESCRICAO like '%$buscar%' AND  SITUACAO IN ('A')")or die(mysql_error());
@@ -245,7 +245,7 @@ header("Location: ../index1.php");
                           $produtos = mysql_query("SELECT * FROM produtos WHERE CODIGO like '%$buscar%' OR DESCRICAO like '%$buscar%' AND SITUACAO IN ('A')  order by CODIGO LIMIT $inicio , $registros") or die (mysql_error());
                           $total = mysql_num_rows($produtos);
                     
-                      echo '<table class="table table-hover">';  // opening table tag
+                      echo '<table class="table table-hover">';  //col para dados bd
                   echo '<thead>
                        <tr>
                           <th class="info">Codigo</th>
@@ -255,9 +255,7 @@ header("Location: ../index1.php");
                           <th class="info">Preco de Venda</th>
                         </tr>
                       </thead>';
-                     
                   while ($produto = mysql_fetch_array($produtos)) {
-
                     $num =(float) $produto['PRECOVENDA']; //no BD tem que que estar com as casas decimasis separadas com ponto nao virgula
                   echo '<tr>
                           <td>'.$produto['CODIGO'].'</td>
@@ -284,8 +282,7 @@ header("Location: ../index1.php");
 
                   // Cria um for() para exibir os 3 links antes da página atual
                   for($i = $page-$max_links; $i <= $page-1; $i++) {
-                  // Se o número da página for menor ou igual a zero, não faz nada
-                  // (afinal, não existe página 0, -1, -2..)
+                  // Se o número da página for menor ou igual a zero, não faz nada ex: 0, -1, -2..)
                   if($i <=0) {
                   //faz nada
                   // Se estiver tudo OK, cria o link para outra página
