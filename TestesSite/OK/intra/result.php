@@ -11,6 +11,11 @@ header("Location: ../index1.php");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Techsoft | Gerenciamento Comercial</title>
+    <script type="text/javascript">
+      function redirectpag () {
+        setTimeout("window.location='../intra/consultaprod.php?page=1'");
+      }
+    </script>
     <link rel="shortcut icon" href="../img/icones.png" />
     <style>
         .corFundo{
@@ -63,9 +68,6 @@ header("Location: ../index1.php");
           height: 100px;
           width: 100%;
           background:red;
-        }
-        #btnbuscaprod{
-         
         }
         .endereco{
             float: right;
@@ -206,6 +208,7 @@ header("Location: ../index1.php");
 
 <!--/FILTROS-->   </div>
                    <?php include 'conexao.php' ?>
+                      
                       <?php
                         $page = $_GET["page"];
                         if(isset($page)) {
@@ -214,14 +217,17 @@ header("Location: ../index1.php");
                         $page = 1;
                       }
                       //verifica a página atual caso seja informada na URL, senão atribui como 1ª página
-                      
                    
-                      //seleciona todos os itens da tabela
                           $buscar = $_POST ['txtbuscaprod'];
-                          $produtos = mysql_query("SELECT * FROM produtos WHERE DESCRICAO like '%$buscar%' ")or die(mysql_error());
+
+                          if ($buscar == ""){
+                            echo "<script>redirectpag();</script>";
+                          }
+                      //seleciona todos os itens da tabela                  
+                          $produtos = mysql_query("SELECT * FROM produtos WHERE CODIGO like '%$buscar%' OR DESCRICAO like '%$buscar%' AND  SITUACAO IN ('A')")or die(mysql_error());
                       //conta o total de itens
                           $total = mysql_num_rows($produtos);
-                     
+                          echo $buscar;
                      
                       //seta a quantidade de itens por página, neste caso, 2 itens
                           $registros = 10;
@@ -236,7 +242,7 @@ header("Location: ../index1.php");
                    
                       //seleciona os itens por página
                           
-                          $produtos = mysql_query("SELECT * FROM produtos WHERE DESCRICAO like '%$buscar%' order by CODIGO LIMIT $inicio , $registros") or die (mysql_error());
+                          $produtos = mysql_query("SELECT * FROM produtos WHERE CODIGO like '%$buscar%' OR DESCRICAO like '%$buscar%' AND SITUACAO IN ('A')  order by CODIGO LIMIT $inicio , $registros") or die (mysql_error());
                           $total = mysql_num_rows($produtos);
                     
                       echo '<table class="table table-hover">';  // opening table tag
@@ -251,6 +257,7 @@ header("Location: ../index1.php");
                       </thead>';
                      
                   while ($produto = mysql_fetch_array($produtos)) {
+
                     $num =(float) $produto['PRECOVENDA']; //no BD tem que que estar com as casas decimasis separadas com ponto nao virgula
                   echo '<tr>
                           <td>'.$produto['CODIGO'].'</td>

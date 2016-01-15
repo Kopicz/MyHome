@@ -60,13 +60,11 @@ header("Location: ../index1.php");
 
         }
         #divfiltros{
-          height: 100px;
+          
           width: 100%;
           background: red;
         }
-        #btnbuscaprod{
-         
-        }
+        
         .endereco{
             float: right;
             text-align: right;
@@ -195,7 +193,7 @@ header("Location: ../index1.php");
                   
 <!--consulta-->
 <!--1 conteudo--> <div class="panel panel-primary" id="divConteudoPrincipal"  style="background-color:#FFF" id="ConteudoConsult">
-                   <div class="panel-heading" ><center><b>CONSULTA CLIENTES</b></center></div>
+                   <div class="panel-heading" ><center><b>CONSULTA PRODUTOS</b></center></div>
 <!--FILTROS-->    <div id="divfiltros" class="form-group">
                   <form name="formbusca" method="post" action="result.php?page=1">
                     <label class="col-xs-2 control-label">Pesquisar: </label>
