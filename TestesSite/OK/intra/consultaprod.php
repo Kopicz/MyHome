@@ -197,15 +197,14 @@ header("Location: ../index1.php");
 <!--FILTROS-->    <div id="divfiltros" class="form-group">
                   <form name="formbusca" method="post" action="result.php?page=1">
                     <label class="col-xs-2 control-label">Pesquisar: </label>
-                    <input type="text" name="txtbuscaprod" id="txtbuscaprod" size="35" style="float: left;"> 
-                      
+                    <input type="text" name="txtbuscaprod" id="txtbuscaprod" size="35"placeholder="Text input" style="float: left;"> 
                           <label class="col-xs-1 control-label">Ordem: </label>
                           <div class="col-xs-2 selectContainer">
                               <select class="form-control" name="filter_order">
-                                  <?php echo "<option id="0" name="">Alfábetica</option>" ?>
-                                  <?php echo $filcod"<option id="2" name="1">Código</option>"?>
-                                  <?php echo $filRef"<option id="3" name="2">Referencia</option>"?>
-                                  <?php echo $filPreco = "<option id="4" name="3">Preço de Venda</option>"?>
+                                  <?php echo $filAlf = "<option id='0' name=''>Alfábetica</option>" ;?>
+                                  <?php echo $filcod ="<option id='2' name='1'>Código</option>";?>
+                                  <?php echo $filRef ="<option id='3' name='2'>Referencia</option>";?>
+                                  <?php echo $filPreco = "<option id='4' name='3'>Preço de Venda</option>";?>
                               </select>
                           </div>
                     <button  id="btnbuscaprod" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>

@@ -65,7 +65,6 @@ header("Location: ../index1.php");
 
         }
         #divfiltros{
-          height: 100px;
           width: 100%;
           background:red;
         }
@@ -200,7 +199,7 @@ header("Location: ../index1.php");
                    <div class="panel-heading" ><center><b>CONSULTA CLIENTES<!--/2--></b></center></div>
 <!--FILTROS-->    <div id="divfiltros">
                   <form name="formbusca" method="POST" action="result.php?page=1">
-                    <input type="text" name="txtbuscaprod" id="txtbuscaprod" size="35" value="pas"> 
+                    <input type="text" name="txtbuscaprod" id="txtbuscaprod" size="35" > 
                     <button  id="btnbuscaprod" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
                      <a href="indexlog.php"><button id="btnbuscaprod" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-remove" style="color:red"></span> Fechar</button></a>
                   </form>    
@@ -291,7 +290,7 @@ header("Location: ../index1.php");
                   }
                   }
                   // Exibe a página atual, sem link, apenas o número
-                  echo "<li class='disabled'><a href='result.php.php?page=$i'>$i</a></li>";
+                  echo "<li class='disabled'><a href='result.php?page=$i'>$i</a></li>";
                   // Cria outro for(), desta vez para exibir 3 links após a página atual
                   for($i = $page+1; $i <= $page+$max_links; $i++) {
                   // Verifica se a página atual é maior do que a última página. Se for, não faz nada.
