@@ -60,9 +60,12 @@ header("Location: ../index1.php");
 
         }
         #divfiltros{
-          
           width: 100%;
-          background: red;
+        }
+        #txtbuscaprod{
+          float: left;
+          margin-top: 7px;
+          margin-left: 7px;
         }
         
         .endereco{
@@ -196,9 +199,7 @@ header("Location: ../index1.php");
                    <div class="panel-heading" ><center><b>CONSULTA PRODUTOS</b></center></div>
 <!--FILTROS-->    <div id="divfiltros" class="form-group">
                   <form name="formbusca" method="post" action="result.php?page=1">
-                    <label class="col-xs-2 control-label">Pesquisar: </label>
-                    <input type="text" name="txtbuscaprod" id="txtbuscaprod" size="35"placeholder="Text input" style="float: left;"> 
-                          <label class="col-xs-1 control-label">Ordem: </label>
+                    <input type="text" name="txtbuscaprod" id="txtbuscaprod" size="35"placeholder="Pesquisar"> 
                           <div class="col-xs-2 selectContainer">
                               <select class="form-control" name="filter_order">
                                   <?php echo $filAlf = "<option id='0' name=''>Alfábetica</option>" ;?>
@@ -208,7 +209,7 @@ header("Location: ../index1.php");
                               </select>
                           </div>
                     <button  id="btnbuscaprod" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
-                     <a href="indexlog.php"><button id="btnbuscaprod" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-remove" style="color:red"></span> Fechar</button></a>
+                     <a href="indexlog.php"><button id="btnbuscaprod" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-remove"''></span> Fechar</button></a>
                   </form>    
 
 

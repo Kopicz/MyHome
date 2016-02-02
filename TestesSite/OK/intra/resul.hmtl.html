@@ -198,7 +198,7 @@ header("Location: ../index1.php");
 <!--1 conteudo--> <div class="panel panel-primary" id="divConteudoPrincipal"  style="background-color:#FFF" id="ConteudoConsult">
                    <div class="panel-heading" ><center><b>CONSULTA CLIENTES<!--/2--></b></center></div>
 <!--FILTROS-->    <div id="divfiltros">
-                  <form name="formbusca" method="POST" action="result.php?$page">
+                  <form name="formbusca" method="POST" action="">
                     <input type="text" name="txtbuscaprod" id="txtbuscaprod" size="35" > 
                     <button  id="btnbuscaprod" type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span> Pesquisar</button>
                      <a href="indexlog.php"><button id="btnbuscaprod" type="button" class="btn btn-primary"><span class="glyphicon glyphicon-remove" style="color:red"></span> Fechar</button></a>
@@ -242,7 +242,7 @@ header("Location: ../index1.php");
                    
                       //seleciona os itens por página
                           
-                          $produtos = mysql_query("SELECT * FROM produtos WHERE CODIGO like '%$buscar%' OR DESCRICAO like '%$buscar%' AND SITUACAO IN ('A')  order by CODIGO LIMIT $inicio , $registros") or die (mysql_error());
+                          $produtos = mysql_query("SELECT * FROM produtos WHERE CODIGO like '%$buscar%' OR DESCRICAO like '%$buscar%' AND SITUACAO IN ('A') LIMIT $inicio , $registros") or die (mysql_error());
                           $total = mysql_num_rows($produtos);
                           echo $total;
                           echo $page;
@@ -257,6 +257,7 @@ header("Location: ../index1.php");
                         </tr>
                       </thead>';
                   while ($produto = mysql_fetch_array($produtos)) {
+                  $buscar = $produto['txtbuscaprod'];  
                     $num =(float) $produto['PRECOVENDA']; //no BD tem que que estar com as casas decimasis separadas com ponto nao virgula
                     echo '<tr>
                             <td>'.$produto['CODIGO'].'</td>
